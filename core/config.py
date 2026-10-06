@@ -2,13 +2,12 @@
 core/config.py - Cấu hình hệ thống Ingestion & Dashboard
 Thu thập dữ liệu ngập lụt đô thị gần thời gian thực đa nền tảng:
 1. TikTok Video: Video & Hashtag ngập lụt TP.HCM (Giữ nguyên ổn định).
-2. Facebook: Tìm kiếm bài đăng ngập lụt thời gian thực qua Search Actor chống block.
-3. Threads (Meta Threads): Cập nhật mưa ngập thời gian thực qua Search Scraper chi phí tối ưu.
+2. Facebook: Tìm kiếm bài đăng ngập lụt thời gian thực qua Actor tối ưu chi phí & khớp điểm nóng.
 """
 
 import os
 
-# Apify API Token - Sử dụng token mới được cung cấp
+# Apify API Token - Sử dụng token mới được cung cấp (Free tier có sẵn $5 credit)
 APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
 
 # ==========================================
@@ -50,26 +49,7 @@ DEFAULT_SEARCH_QUERIES = [
 ]
 
 # ==========================================
-# 2. Cấu hình Actor cào Threads (Meta Threads)
-# Chuyển sang futurizerush~meta-threads-scraper (chỉ $0.0025/kết quả, rẻ hơn 8 lần so với igview $0.02)
-# Hỗ trợ tìm kiếm theo nhiều hashtag & từ khóa cùng lúc, không cần đăng nhập.
-# ==========================================
-THREADS_ACTOR_ID = os.environ.get("THREADS_ACTOR_ID", "futurizerush~meta-threads-scraper")
-THREADS_SEARCH_QUERIES = [
-    "#ngaplut",
-    "#muangap",
-    "#ngapsaigon",
-    "#trieucuong",
-    "mưa ngập",
-    "triều cường ngập",
-    "ngập xe chết máy",
-    "ngập úng"
-]
-
-# ==========================================
-# 3. Cấu hình Actor cào Facebook (Chỉ giữ 1 Search Actor tối ưu)
-# Truy vấn tìm kiếm hợp nhất (Consolidated Search): kết hợp cả 'mưa ngập' và 'Sài Gòn' trong 1 truy vấn lớn
-# Tránh tìm riêng lẻ từng hashtag gây loãng hoặc sót dữ liệu.
+# 2. Cấu hình Actor cào Facebook
 # ==========================================
 FB_SEARCH_PPR_ACTOR_ID = "danek~facebook-search-ppr"
 FB_ACTOR_ID = FB_SEARCH_PPR_ACTOR_ID
