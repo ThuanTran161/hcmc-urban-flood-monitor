@@ -1,4 +1,5 @@
-﻿"""
+﻿# -*- coding: utf-8 -*-
+"""
 core/config.py - Cấu hình hệ thống Ingestion & Dashboard
 Thu thập dữ liệu ngập lụt đô thị gần thời gian thực đa nền tảng:
 1. TikTok Video: Video & Hashtag ngập lụt TP.HCM (Giữ nguyên ổn định).
